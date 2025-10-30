@@ -1,0 +1,23 @@
+{
+    "name": "anteo/yii2-fontawesome",
+    "description": "Font Awesome implementation for Yii2",
+    "keywords": ["yii2",  "framework", "fontawesome"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "p3pp01",
+            "email": "pietro.bardone@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "yiisoft/yii2": "~2.0.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anteo\\Yii2Fontawesome\\": ""
+        }
+    },
+}
