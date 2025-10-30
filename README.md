@@ -2,7 +2,6 @@ Anteo Yii2 fontawesome
 ======================
 
 Font Awesome implementation for Yii2 - Provided by Marco Curatitoli at HalService
--------------
 
 Latest Update
 -------------
