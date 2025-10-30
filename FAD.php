@@ -1,14 +1,14 @@
 <?php
-namespace hal\fontawesome;
+namespace anteo\fontawesome;
 
-use hal\fontawesome\dictionaries\FabDefinitions;
-use hal\fontawesome\dictionaries\FarDefinitions;
-use hal\fontawesome\dictionaries\FasDefinitions;
-use hal\fontawesome\dictionaries\LegacyDefinitions;
+use anteo\fontawesome\dictionaries\FabDefinitions;
+use anteo\fontawesome\dictionaries\FarDefinitions;
+use anteo\fontawesome\dictionaries\FasDefinitions;
+use anteo\fontawesome\dictionaries\LegacyDefinitions;
 
 /**
  * Class FAB
- * @package hal\fontawesome
+ * @package anteo\fontawesome
  */
 class FAD extends FontAwesome implements FarDefinitions, FasDefinitions
 {

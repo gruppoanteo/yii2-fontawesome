@@ -1,14 +1,14 @@
 <?php
-namespace hal\fontawesome\components;
+namespace anteo\fontawesome\components;
 
-use hal\fontawesome\FontAwesome;
+use anteo\fontawesome\FontAwesome;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
  * Class Icon
- * @package hal\fontawesome\components
+ * @package anteo\fontawesome\components
  */
 class Icon
 {

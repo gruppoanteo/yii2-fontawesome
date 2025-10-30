@@ -1,10 +1,10 @@
 <?php
 
-namespace hal\fontawesome;
+namespace anteo\fontawesome;
 
 /**
  * Class CdnFreeAssetBundle
- * @package hal\fontawesome
+ * @package anteo\fontawesome
  */
 class AssetBundle extends \yii\web\AssetBundle
 {

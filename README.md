@@ -1,215 +1,163 @@
-Anteo Yii2 fontawesome
-======================
+## yii2-fontawesome
 
-Font Awesome implementation for Yii2 - Provided by Marco Curatitoli at HalService
+Font Awesome 5 integration for Yii2. Provides helpers to render icons, stacked icons, and list icons with a fluent PHP API, plus ready-to-use asset bundles (CDN or locally bundled assets). Provided by Marco Curatitoli at HalService. Mantained by Pietro Bardone (p3pp01) at Anteo Impresa Sociale.
 
-Latest Update
--------------
-Fontawesome Version `5.13.0` (nulled) 
+### Requirements
 
-Installation
-------------
+- PHP >= 5.4
+- Yii2 ~2.0.15
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+### Installation
 
-Either run
+Install via Composer:
 
-```
-php composer.phar require --prefer-dist anteo/yii2-fontawesome "*"
+```bash
+composer require anteo/yii2-fontawesome
 ```
 
-or add
+### Assets
 
-```
-"anteo/yii2-fontawesome": "*"
-```
+You can load Font Awesome either from the official CDN or from the locally bundled assets included in this package.
 
-to the require section of your `composer.json` file.
+- CDN (default): `anteo\fontawesome\AssetBundle`
+  - Loads `//use.fontawesome.com/releases/v5.13.0/css/all.css` and `v4-shims.css`.
 
+- Local assets: `anteo\fontawesome\AssetBundlePro`
+  - Publishes CSS/JS/webfonts from the package `assets/` folder.
 
-Usage with fa free version
--------------------------
-
-Add `AssetBundle` as depends of your app asset bundle:
-```php
-class AppAsset extends AssetBundle
-{
-	// ...
-
-	public $depends = [
-		// ...
-		'anteo\fontawesome\AssetBundle'
-	];
-}
-
-```
-
-Or inject `AssetBundle` in your view:
+Register assets in a view:
 
 ```php
-anteo\fontawesome\AssetBundle::register($this);
+\anteo\fontawesome\AssetBundle::register($this);          // CDN
+// or
+\anteo\fontawesome\AssetBundlePro::register($this);       // Local assets
 ```
 
-Class reference
----------------
-
-Namespace: `anteo\fontawesome`;
-
-### Class  `FAB`, `FAL`, `FAR`, `FAD`, `FAS` or `FA`
-
-* `static FAR::icon($name, $options=[])` - Creates an [`components\Icon`](#class-componenticon) that can be used to FontAwesome html icon
-  * `$name` - name of icon in font awesome set.
-  * `$options` - additional attributes for `i.fa` html tag.
-* `static FAR::stack($name, $options=[])` - Creates an [`components\Stack`](#class-componentstack) that can be used to FontAwesome html icon
-  * `$options` - additional attributes for `span.fa-stack` html tag.
-
-### Class `components\Icon`
-
-* `(string)$Icon` - render icon
-* `$Icon->addCssClass($value)` - add to html tag css class in `$value`
-  * `$value` - name of css class
-* `$Icon->inverse()` - add to html tag css class `fa-inverse`
-* `$Icon->spin()` - add to html tag css class `fa-spin`
-* `$Icon->fixedWidth()` - add to html tag css class `fa-fw`
-* `$Icon->ul()` - add to html tag css class `fa-ul`
-* `$Icon->li()` - add to html tag css class `fa-li`
-* `$Icon->border()` - add to html tag css class `fa-border`
-* `$Icon->pullLeft()` - add to html tag css class `pull-left`
-* `$Icon->pullRight()` - add to html tag css class `pull-right`
-* `$Icon->size($value)` - add to html tag css class with size
-  * `$value` - size value (variants: `FA::SIZE_LARGE`, `FA::SIZE_2X`, `FA::SIZE_3X`, `FA::SIZE_4X`, `FA::SIZE_5X`)
-* `$Icon->rotate($value)` - add to html tag css class with rotate
-  * `$value` - rotate value (variants: `FA::ROTATE_90`, `FA::ROTATE_180`, `FA::ROTATE_270`)
-* `$Icon->flip($value)` - add to html tag css class with rotate
-  * `$value` - flip value (variants: `FA::FLIP_HORIZONTAL`, `FA::FLIP_VERTICAL`)
-
-### Class `components\IconDuo`
-Extends `components\Icon` adding a couple of methods for duoColors icons
-* `$IconDuo->duo($options = [])` - add to html tag styles in `$options` according to keys: 
-  * `primary-color` - icon primary color
-  * `secondary-color` - icon secondary color
-  * `primary-opacity` - icon primary color opacity
-  * `secondary-opacity` - icon secondary color opacity
-* `$Icon->swapOpacity()` - add to html tag css class `fad-swap-opacity`
-
-
-### Class `components\Stack`
-
-* `(string)$Stack` - render icon stack
-* `$Stack->icon($icon, $options=[])` - set icon for stack
-  * `$icon` - name of icon or `component\Icon` object
-  * `$options` - additional attributes for icon html tag.
-* `$Stack->icon($icon, $options=[])` - set background icon for stack
-  * `$icon` - name of icon or `component\Icon` object
-  * `$options` - additional attributes for icon html tag.
-
-Helper examples
----------------
+Or add as a dependency in your main `AppAsset`:
 
 ```php
-use anteo\fontawesome\FA;use anteo\fontawesome\FAD;
-
-// normal use
-echo FA::icon('FA::_HOME'); // <i class="fas fa-home"></i>
-
-// shortcut
-echo FA::i('FA::_HOME'); // <i class="fas fa-home"></i>
-
-// icon with additional attributes
-echo FA::icon(
-    'arrow-left', 
-    ['class' => 'big', 'data-role' => 'arrow']
-); // <i class="big fas fa-arrow-left" data-role="arrow"></i>
-
-// icon in button
-echo Html::submitButton(
-    Yii::t('app', '{icon} Save', ['icon' => FAS::icon('check')])
-); // <button type="submit"><i class="fas fa-check"></i> Save</button>
-
-// icon with additional methods
-echo FAS::icon('cog')->inverse();    // <i class="fas fa-cog fa-inverse"></i>
-echo FAS::icon('cog')->spin();       // <i class="fas fa-cog fa-spin"></i>
-echo FAS::icon('cog')->fixedWidth(); // <i class="fas fa-cog fa-fw"></i>
-echo FAS::icon('cog')->li();         // <i class="fas fa-cog fa-li"></i>
-echo FAS::icon('cog')->border();     // <i class="fas fa-cog fa-border"></i>
-echo FAS::icon('cog')->pullLeft();   // <i class="fas fa-cog pull-left"></i>
-echo FAS::icon('cog')->pullRight();  // <i class="fas fa-cog pull-right"></i>
-
-// icon size
-echo FAS::icon('cog')->size(FAS::SIZE_3X);
-// values: FAS::SIZE_LARGE, FAS::SIZE_2X, FAS::SIZE_3X, FAS::SIZE_4X, FAS::SIZE_5X
-
-// icon rotate
-echo FAS::icon('cog')->rotate(FAS::ROTATE_90); 
-// values: FAS::ROTATE_90, FAS::ROTATE_180, FAS::ROTATE_180
-
-// icon flip
-echo FAS::icon('cog')->flip(FAS::FLIP_VERTICAL); 
-// values: FAS::FLIP_HORIZONTAL, FAS::FLIP_VERTICAL
-
-// icon with multiple methods
-echo FAS::icon('cog')
-        ->spin()
-        ->fixedWidth()
-        ->pullLeft()
-        ->size(FAS::SIZE_LARGE);
-// <i class="fas fa-cog fa-spin fa-fw pull-left fa-size-lg"></i>
-
-// icons stack
-echo FAS::stack()
-        ->icon('twitter')
-        ->on('square-o');
-// <span class="fa-stack">
-//   <i class="fas fa-square-o fa-stack-2x"></i>
-//   <i class="fas fa-twitter fa-stack-1x"></i>
-// </span>
-
-// icons stack with additional attributes
-echo FAS::stack(['data-role' => 'stacked-icon'])
-     ->on(FAS::Icon('square')->inverse())
-     ->icon(FAS::Icon('cog')->spin());
-// <span class="fa-stack" data-role="stacked-icon">
-//   <i class="fas fa-square-o fa-inverse fa-stack-2x"></i>
-//   <i class="fas fa-cog fa-spin fa-stack-1x"></i>
-// </span>
-
-// Stacking text and icons
-echo FAS::stack()
-     ->on(FAS::Icon('square'))
-     ->text('1');
-// <span class="fa-stack">
-//   <i class="fas fa-square fa-stack-2x"></i>
-//   <span class="fa-stack-1x">1</span>
-// </span>
-
-// Stacking text and icons with options
-echo FAS::stack()
-     ->on(FAS::Icon('square'))
-     ->text('1', ['tag'=>'strong', 'class'=>'stacked-text']);
-// <span class="fa-stack">
-//   <i class="fas fa-square fa-stack-2x"></i>
-//   <strong class="stacked-text fa-stack-1x">1</strong>
-// </span>
-// Now you can add some css for vertical text positioning:
-.stacked-text { margin-top: .3em; }
-
-// unordered list icons 
-echo FAS::ul(['data-role' => 'unordered-list'])
-     ->item('Bullet item', ['icon' => 'circle'])
-     ->item('Checked item', ['icon' => 'check']);
-// <ul class="fa-ul" data-role="unordered-list">
-//   <li><i class="fas fa-circle fa-li"></i>Bullet item</li>
-//   <li><i class="fas fa-check fa-li"></i>Checked Item</li>
-// </span>
-
-// autocomplete icons name in IDE
-echo FAS::icon(FAS::_COG);
-echo FAS::icon(FAS::_DESKTOP);
-echo FAS::stack()
-     ->on(FAS::_CIRCLE_O)
-     ->icon(FAS::_TWITTER);
-
-//duocolor icons
-echo FAD::icon(FAD::_ANGLE_DOUBLE_DOWN)->duo(['primary-color' => 'blue'])->swapOpacity();
+public $depends = [
+    // ...
+    anteo\fontawesome\AssetBundle::class,      // or AssetBundlePro::class
+];
 ```
+
+### Quick start
+
+The main static facade is `anteo\fontawesome\FA` (extends `FontAwesome`). It auto-detects the proper style prefix (solid/regular/brands) based on icon name, with a compatibility matrix for v4/v5 names. You can also use style-specific facades: `FAS` (solid), `FAR` (regular), `FAB` (brands), `FAL` (light, Pro), `FAD` (duotone, Pro).
+
+```php
+use anteo\fontawesome\FA;
+
+echo FA::icon('user');                   // auto prefix → <i class="fas fa-user"></i>
+echo FA::i('github');                    // brands → <i class="fab fa-github"></i>
+
+// Force a specific family
+echo anteo\fontawesome\FAS::icon('cog');
+echo anteo\fontawesome\FAR::icon('address-book');
+echo anteo\fontawesome\FAB::icon('twitter');
+```
+
+Regular icons accept a legacy suffix `_O` (mapped to `far`):
+
+```php
+echo FA::icon('address-book_O');         // → <i class="far fa-address-book"></i>
+```
+
+### Icon helpers
+
+Returned icon objects are stringable and support a fluent API:
+
+```php
+use anteo\fontawesome\FA;
+
+echo FA::icon('cog')
+    ->spin()
+    ->fixedWidth()
+    ->size(FA::SIZE_2X);                 // lg, sm, xs, 2x..10x
+
+echo FA::icon('sync')->pulse();
+echo FA::icon('reply')->flip(FA::FLIP_HORIZONTAL);
+echo FA::icon('redo')->rotate(FA::ROTATE_90);
+```
+
+Supported size constants:
+
+`SIZE_LG, SIZE_SM, SIZE_XS, SIZE_2X, SIZE_3X, SIZE_4X, SIZE_5X, SIZE_6X, SIZE_7X, SIZE_8X, SIZE_9X, SIZE_10X`
+
+Supported transforms:
+
+- rotate: `ROTATE_90, ROTATE_180, ROTATE_270`
+- flip: `FLIP_HORIZONTAL, FLIP_VERTICAL`
+
+Additional helpers: `inverse(), border(), pullLeft(), pullRight(), li()`
+
+### Stacked icons
+
+Create stacked icons using `Stack`:
+
+```php
+use anteo\fontawesome\FA;
+
+echo FA::stack(null)
+    ->on('square')        // background (2x)
+    ->icon('flag');       // foreground (1x)
+```
+
+You can also place text on top:
+
+```php
+echo FA::stack(null)
+    ->on('circle')
+    ->text('99+', ['class' => 'badge']);
+```
+
+### Unordered lists with icons
+
+Render an `<ul>` with list icons using `UnorderedList`:
+
+```php
+use anteo\fontawesome\FA;
+
+echo FA::ul(null)
+    ->item('First item',  ['icon' => 'check'])
+    ->item('Second item', ['icon' => 'times']);
+```
+
+### Duotone (Pro)
+
+Duotone requires Font Awesome Pro. Use the `FAD` facade which returns `IconDuo` instances:
+
+```php
+use anteo\fontawesome\FAD;
+
+echo FAD::icon('camera')
+    ->duo([
+        'primary-color' => '#4a90e2',
+        'secondary-color' => '#333',
+        'primary-opacity' => '0.85',
+        'secondary-opacity' => '0.6',
+    ])
+    ->swapOpacity();
+```
+
+Light style (Pro) is available via `FAL`.
+
+### Forcing a style globally
+
+You can force a style globally by setting the static prefix:
+
+```php
+anteo\fontawesome\FontAwesome::$cssPrefix = 'fas'; // or 'far', 'fab', 'fal', 'fad'
+```
+
+### Version
+
+Bundled assets target Font Awesome 5.13.0.
+
+### License
+
+- This Yii2 extension: BSD-3-Clause (see `composer.json`).
+- Font Awesome fonts, CSS/JS, and assets are licensed by their respective owners (see `assets/LICENSE.txt`). Ensure you comply with Font Awesome Free/Pro licensing for your use case.
+
 

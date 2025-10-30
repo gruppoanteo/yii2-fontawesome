@@ -1,13 +1,13 @@
 <?php
-namespace hal\fontawesome\components;
+namespace anteo\fontawesome\components;
 
-use hal\fontawesome\FontAwesome;
+use anteo\fontawesome\FontAwesome;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
  * Class Stack
- * @package hal\fontawesome\components
+ * @package anteo\fontawesome\components
  */
 class Stack
 {
@@ -81,7 +81,7 @@ class Stack
     /**
      * @param string|Icon $icon
      * @param array $options
-     * @return hal\fontawesome\components\Stack
+     * @return anteo\fontawesome\components\Stack
      */
     public function icon($icon, $options = [])
     {
@@ -97,7 +97,7 @@ class Stack
     /**
      * @param string $text
      * @param array $options
-     * @return hal\fontawesome\components\Stack
+     * @return anteo\fontawesome\components\Stack
      */
     public function text($text = '', $options = [])
     {
@@ -113,7 +113,7 @@ class Stack
     /**
      * @param string|Icon $icon
      * @param array $options
-     * @return hal\fontawesome\components\Stack
+     * @return anteo\fontawesome\components\Stack
      */
     public function on($icon, $options = [])
     {

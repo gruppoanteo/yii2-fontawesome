@@ -1,5 +1,5 @@
 <?php
-namespace hal\fontawesome\dictionaries;
+namespace anteo\fontawesome\dictionaries;
 
 interface FasDefinitions
 {

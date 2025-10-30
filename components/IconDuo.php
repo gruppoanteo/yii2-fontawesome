@@ -1,7 +1,7 @@
 <?php
 
 
-namespace hal\fontawesome\components;
+namespace anteo\fontawesome\components;
 
 
 use yii\helpers\ArrayHelper;
@@ -10,7 +10,7 @@ use yii\helpers\Html;
 /**
  * Class IconDuo
  *
- * @package hal\fontawesome\components
+ * @package anteo\fontawesome\components
  */
 class IconDuo extends Icon
 {

@@ -1,13 +1,13 @@
 <?php
-namespace hal\fontawesome\components;
+namespace anteo\fontawesome\components;
 
-use hal\fontawesome\FontAwesome;
+use anteo\fontawesome\FontAwesome;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
  * Class UnorderedList
- * @package hal\fontawesome\components
+ * @package anteo\fontawesome\components
  */
 class UnorderedList
 {
@@ -51,7 +51,7 @@ class UnorderedList
     /**
      * @param string $label
      * @param array $options
-     * @return hal\fontawesome\components\UnorderedList
+     * @return anteo\fontawesome\components\UnorderedList
      */
     public function item($label, $options = [])
     {

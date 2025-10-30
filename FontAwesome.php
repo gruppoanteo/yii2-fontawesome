@@ -1,11 +1,11 @@
 <?php
-namespace hal\fontawesome;
+namespace anteo\fontawesome;
 
-use hal\fontawesome\component;
+use anteo\fontawesome\component;
 
 /**
  * Class FA
- * @package hal\fontawesome
+ * @package anteo\fontawesome
  */
 class FontAwesome
 {

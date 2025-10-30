@@ -1,11 +1,11 @@
 <?php
-namespace hal\fontawesome;
+namespace anteo\fontawesome;
 
-use hal\fontawesome\dictionaries\FasDefinitions;
+use anteo\fontawesome\dictionaries\FasDefinitions;
 
 /**
  * Class FAS
- * @package hal\fontawesome
+ * @package anteo\fontawesome
  */
 class FAS extends FontAwesome implements FasDefinitions
 {
